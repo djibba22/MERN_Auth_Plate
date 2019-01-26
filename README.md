@@ -6,9 +6,10 @@ This application solves the problem of people bringing the same items to a party
 
 ## Tech Stack
 + MONGO DB with MONGOOSE ORM
++ EXPRESS
 + REACT
 + NODE
-+ EXPRESS
+
 
 
 ## Install and run
