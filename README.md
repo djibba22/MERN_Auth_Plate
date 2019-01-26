@@ -12,5 +12,5 @@ EXPRESS
 
 
 ## Install and run
-`yarn install`
+`yarn install` "\n"
 `yarn start`
