@@ -5,10 +5,10 @@ Productivity tool for organizing large get togethers.
 This application solves the problem of people bringing the same items to a party.
 
 ## Tech Stack
-MONGO DB with MONGOOSE ORM
-REACT
-NODE
-EXPRESS
++ MONGO DB with MONGOOSE ORM
++ REACT
++ NODE
++ EXPRESS
 
 
 ## Install and run
