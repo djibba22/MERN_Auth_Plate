@@ -1,7 +1,6 @@
-const db = require("../models");
+const Account = require("../models/account");
 const express = require('express');
 const passport = require('passport');
-const Account = require('../models/account');
 const router = express.Router();
 
 module.exports = {
@@ -20,7 +19,7 @@ module.exports = {
     },
     register: function(req, res, next) {
         console.log('/register handler', req.body);
-		db.Account.register(new Account({ username : req.body.username }), req.body.password, (err, account) => {
+		Account.register(new Account({ username : req.body.username }), req.body.password, (err, account) => {
 				if (err) {
 					return res.status(500).send({ error : err.message });
 				}
