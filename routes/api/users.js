@@ -17,8 +17,6 @@ router.route("/logout")
 
 
 // Matches with "/api/users/:id"
-console.log(`test function =  ${typeof usersController.test}`);
-
 router
   .route("/ping")
   .get(usersController.test);
