@@ -1,6 +1,7 @@
 import React from 'react'
 
-class LoginForm extends React.Component {
+
+class RegisterForm extends React.Component {
 	// refs
 	form: null;
 	usernameElem: null;
@@ -8,6 +9,8 @@ class LoginForm extends React.Component {
 
 	render() {
 		const { onRegister } = this.props;
+		console.log(`Register form props are: ${JSON.stringify(this.props)}`);
+		
 		return (
 			<div className="container">
 				<form
@@ -34,4 +37,4 @@ class LoginForm extends React.Component {
 	}
 }
 
-export default LoginForm
+export default RegisterForm

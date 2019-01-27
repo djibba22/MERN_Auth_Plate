@@ -3,75 +3,45 @@ import {
 	BrowserRouter as Router,
 	Route,
 	Link,
-	Redirect,
+  Redirect,
+  Switch,
 	withRouter
-} from 'react-router-dom'
-
-import LoginForm from './components/LoginForm'
-import RegisterForm from './components/RegisterForm'
+} from 'react-router-dom';
+import Auth from "./utils/Auth";
+import Nav from "./components/Nav";
+import Login from "./components/Login";
+import Register from "./components/Register";
+//import Home from "./pages/Home";
+import NoMatch from "./pages/NoMatch";
 
 const AuthExample = () => (
 	<Router>
 		<div>
+      <Nav />
 			<AuthButton/>
 			<ul>
 				<li><Link to="/public">Public Page</Link></li>
 				<li><Link to="/protected">Protected Page</Link></li>
 				<li><Link to="/register">Register a New User</Link></li>
 			</ul>
-			<Route path="/public" component={Public}/>
-			<Route path="/login" component={Login}/>
-			<Route path="/register" component={Register}/>
-			<PrivateRoute path="/protected" component={Protected}/>
+      <Switch>
+        <Route path="/public" component={Public}/>
+        <Route path="/login" component={Login}/>
+        <Route path="/register" component={Register}/>
+        <PrivateRoute path="/protected" component={Protected}/>
+        <Route component={NoMatch} />
+      </Switch>
 		</div>
 	</Router>
 )
 
-const auth = {
-	isAuthenticated: false,
-	authenticate(cb) {
-		// req.user on backend will contain user info if
-		// this person has credentials that are valid
-		fetch('api/users/user', {
-			credentials: 'include'
-		})
-		.then((res) => {
-			this.isAuthenticated = true
-			if (typeof cb === 'function') {
-				cb(res.json().user);
-			}
-		})
-		.catch((err) => {
-			console.log('Error fetching authorized user.');
-		});
-	},
-	signout(cb) {
-		fetch('api/users/logout', {
-			method: 'POST',
-			credentials: 'include'
-		})
-		.then((res) => {
-			this.isAuthenticated = false; 
-			if (typeof cb === 'function') {
-				// user was logged out
-				cb(true);
-			}
-		})
-		.catch((err) => {
-			console.log('Error logging out user.');
-			if (typeof cb === 'function') {
-				// user was not logged out
-				cb(false);
-			}
-		});
-	}
-}
 
+//Authbutton component / withRouter is imported from react-router
 const AuthButton = withRouter(({ history }) => (
-	auth.isAuthenticated ? (
+	Auth.isAuthenticated ? (
 		<p>
 			Welcome! <button onClick={() => {
-				auth.signout(() => history.push('/'))
+				Auth.signout(() => history.push('/'))
 			}}>Sign out</button>
 		</p>
 	) : (
@@ -81,7 +51,7 @@ const AuthButton = withRouter(({ history }) => (
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
 	<Route {...rest} render={props => (
-		auth.isAuthenticated ? (
+		Auth.isAuthenticated ? (
 			<Component {...props}/>
 		) : (
 			<Redirect to={{
@@ -95,86 +65,10 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 const Public = () => <h3>Public</h3>
 const Protected = () => <h3>Protected</h3>
 
-class Login extends React.Component {
-	state = {
-		redirectToReferrer: false
-	}
-
-	login = (data) => {
-		console.log('Logging in ' + data.username);
-		fetch('api/users/login', {
-			method: 'POST',
-			body: JSON.stringify(data),
-			credentials: 'include',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-		})
-		.then((response) => {
-			if (response.status === 200) {
-				auth.authenticate(() => {
-					this.setState({ redirectToReferrer: true })
-				});
-			}
-		})
-		.catch((err) => {
-			console.log('Error logging in.', err);
-		});
-	}
-
-	render() {
-		const { from } = this.props.location.state || { from: { pathname: '/' } }
-		const { redirectToReferrer } = this.state
-		
-		if (redirectToReferrer) {
-			return (
-				<Redirect to={from}/>
-			)
-		}
-		
-		return (
-			<div>
-				<p>You must log in to view the page at {from.pathname}</p>
-				<LoginForm onLogin={this.login} />
-			</div>
-		)
-	}
-}
 
 
-class Register extends React.Component {
-	state = {
-		redirectToReferrer: false
-	}
 
-	register = (data) => {
-		fetch('api/users/register', {
-			method: 'POST',
-			body: JSON.stringify(data),
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			credentials: 'include'
-		})
-		.then((response) => {
-			if (response.status === 200) {
-				console.log('Succesfully registered user!');
-			}
-		})
-		.catch((err) => {
-			console.log('Error registering user.', err);
-		});
-	}
 
-	render() {
-		return (
-			<div>
-				<h1>Register a New User</h1>
-				<RegisterForm onRegister={this.register} />
-			</div>
-		)
-	}
-}
 
 export default AuthExample
 
