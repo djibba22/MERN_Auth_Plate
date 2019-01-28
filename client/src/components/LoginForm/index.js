@@ -23,7 +23,7 @@ class LoginForm extends React.Component {
 					<input ref={(input) => this.usernameElem = input} type='text' name="username" placeholder='Enter Username' />
 					<input ref={(input) => this.passwordElem = input} type='password' name="password" placeholder='Password' />
 					<button
-						className="btn btn-default"
+						className="btn btn-info"
 						type='submit'
 					>
 						Submit
