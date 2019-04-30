@@ -9,7 +9,7 @@ class LoginForm extends React.Component {
 	render() {
 		const { onLogin } = this.props;
 		return (
-			<div className="container">
+			
 				<form
 					ref={(elem) => this.form = elem}
 					onSubmit={(e) => {
@@ -20,16 +20,18 @@ class LoginForm extends React.Component {
 						});
 					}}
 				>
-					<input ref={(input) => this.usernameElem = input} type='text' name="username" placeholder='Enter Username' />
-					<input ref={(input) => this.passwordElem = input} type='password' name="password" placeholder='Password' />
-					<button
-						className="btn btn-info"
-						type='submit'
-					>
-						Submit
-					</button>
+					<div className="form-group">
+						<input className="form-control" ref={(input) => this.usernameElem = input} type='text' name="username" placeholder='Enter Username' /><br/>
+						<input className="form-control" ref={(input) => this.passwordElem = input} type='password' name="password" placeholder='Password' /><br/>
+						<button
+							className="btn btn-success"
+							type='submit'
+						>
+							Submit
+						</button>
+					</div>
 				</form>
-			</div>
+			
 		)
 	}
 }
