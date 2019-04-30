@@ -11,8 +11,12 @@ You can fork and run this to quickly have an MVC project up and running, then si
 + [NODE](https://nodejs.org/en/)
 + [PASSPORT](http://www.passportjs.org/docs/username-password/)
 
-
+## Registers a New User
 ![Register A New User](/client/public/images/Register.png)
+
+## Routes are protected from Users that are not logged in
+![Register A New User](/client/public/images/ProtectedRoute.png)
+
 ## Install and run
 `yarn install` <br>
 Make sure you start Mongod
