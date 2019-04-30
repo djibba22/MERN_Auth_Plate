@@ -17,6 +17,8 @@ router.route("/logout")
 
 
 // Matches with "/api/users/:id"
+
+/* Testing Endpoint */
 router
   .route("/ping")
   .get(usersController.test);

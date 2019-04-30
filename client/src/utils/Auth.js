@@ -1,3 +1,8 @@
+/*Authentication*/
+/**
+ * I decide to move everything out here to clean up the environment
+ */
+
 const Auth = {
 	isAuthenticated: false,
 	authenticate(cb) {

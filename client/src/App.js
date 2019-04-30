@@ -14,16 +14,21 @@ import Register from "./components/Register";
 import {Container} from "./components/Grid";
 import PublicRoute from "./pages/PublicRoute";
 import ProtectedRoute from "./pages/PublicRoute";
-//import Home from "./pages/Home";
-// import NoMatch from "./pages/NoMatch";
+import './App.css';
 
+//I want to add some basic inline styling here, even though we are bringing in styles
+const listStyle = {
+	color: 'cornflowerblue',
+	listStyle:'none'
+  };
+//Now we have all the stuff we need .. let's render some components with the Router
 const AuthExample = () => (
 	<Router>
 		<div>
-      		<Nav />
+      		<Nav className="App-header"/>
 			<Container>
 				<AuthButton/>
-				<ul>
+				<ul style={listStyle}>
 					<li><Link to="/public">Public Page</Link></li>
 					<li><Link to="/protected">Protected Page</Link></li>
 					<li><Link to="/register">Register a New User</Link></li>
@@ -54,6 +59,7 @@ const AuthButton = withRouter(({ history }) => (
 	)
 ))
 
+// This is the private route component this checks for an authorized user here
 const PrivateRoute = ({ component: Component, ...rest }) => (
 	<Route {...rest} render={props => (
 		Auth.isAuthenticated ? (
