@@ -12,7 +12,7 @@ You can fork and run this to quickly have an MVC project up and running, then si
 + [PASSPORT](http://www.passportjs.org/docs/username-password/)
 
 
-![Register A New User](http://client/public/images/Register.png)
+![Register A New User](/client/public/images/Register.png)
 ## Install and run
 `yarn install` <br>
 Make sure you start Mongod
