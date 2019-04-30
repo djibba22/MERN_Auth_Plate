@@ -1,6 +1,7 @@
 import React from 'react'
 
 
+
 class RegisterForm extends React.Component {
 	// refs
 	form: null;
@@ -12,7 +13,7 @@ class RegisterForm extends React.Component {
 		console.log(`Register form props are: ${JSON.stringify(this.props)}`);
 		
 		return (
-			<div className="container">
+			
 				<form
 					ref={(elem) => this.form = elem}
 					onSubmit={(e) => {
@@ -23,16 +24,13 @@ class RegisterForm extends React.Component {
 						});
 					}}
 				>
-					<input ref={(input) => this.usernameElem = input} type='text' name="username" placeholder='Enter Username' />
-					<input ref={(input) => this.passwordElem = input} type='password' name="password" placeholder='Password' />
-					<button
-						className="btn btn-default"
-						type='submit'
-					>
-						Submit
-					</button>
+					<div className="form-group">
+						<input className="form-control" ref={(input) => this.usernameElem = input} type='text' name="username" placeholder='Enter Username' /><br/>
+						<input className="form-control"  ref={(input) => this.passwordElem = input} type='password' name="password" placeholder='Password' /><br/>
+						<button className="btn btn btn-primary" type='submit'>Submit</button>
+					</div>
 				</form>
-			</div>
+			
 		)
 	}
 }

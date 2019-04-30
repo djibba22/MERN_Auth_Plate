@@ -59,7 +59,7 @@ class Nav extends Component {
                 Login
               </Link>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <Link
                 onClick={this.toggleNav}
                 className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}
@@ -67,8 +67,8 @@ class Nav extends Component {
               >
                 Search
               </Link>
-            </li>
-            <li className="nav-item">
+            </li> */}
+            {/* <li className="nav-item">
               <Link
                 onClick={this.toggleNav}
                 className={window.location.pathname === "/saved" ? "nav-link active" : "nav-link"}
@@ -76,7 +76,7 @@ class Nav extends Component {
               >
                 Saved
               </Link>
-            </li>
+            </li> */}
           </ul>
         </div>
       </nav>

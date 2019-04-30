@@ -15,4 +15,7 @@ You can fork and run this to quickly have an MVC project up and running, then si
 
 ## Install and run
 `yarn install` <br>
+Make sure you start Mongod
+`mongod`
+Then start the project
 `yarn start`

@@ -1,5 +1,5 @@
 {
-  "name": "mern auth",
+  "name": "mern_auth",
   "version": "1.0.0",
   "description": "Mern Demo with authentication using passport local strategy",
   "main": "server.js",

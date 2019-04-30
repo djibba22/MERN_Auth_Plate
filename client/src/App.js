@@ -11,26 +11,31 @@ import Auth from "./utils/Auth";
 import Nav from "./components/Nav";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import {Container} from "./components/Grid";
+import PublicRoute from "./pages/PublicRoute";
+import ProtectedRoute from "./pages/PublicRoute";
 //import Home from "./pages/Home";
-import NoMatch from "./pages/NoMatch";
+// import NoMatch from "./pages/NoMatch";
 
 const AuthExample = () => (
 	<Router>
 		<div>
-      <Nav />
-			<AuthButton/>
-			<ul>
-				<li><Link to="/public">Public Page</Link></li>
-				<li><Link to="/protected">Protected Page</Link></li>
-				<li><Link to="/register">Register a New User</Link></li>
-			</ul>
-      <Switch>
-        <Route path="/public" component={Public}/>
-        <Route path="/login" component={Login}/>
-        <Route path="/register" component={Register}/>
-        <PrivateRoute path="/protected" component={Protected}/>
-        <Route component={NoMatch} />
-      </Switch>
+      		<Nav />
+			<Container>
+				<AuthButton/>
+				<ul>
+					<li><Link to="/public">Public Page</Link></li>
+					<li><Link to="/protected">Protected Page</Link></li>
+					<li><Link to="/register">Register a New User</Link></li>
+				</ul>
+				<Switch>
+					<Route path="/public" component={PublicRoute}/>
+					<Route path="/login" component={Login}/>
+					<Route path="/register" component={Register}/>
+					<PrivateRoute path="/protected" component={ProtectedRoute}/>
+					{/* <Route component={NoMatch} /> */}
+				</Switch>
+			</Container>
 		</div>
 	</Router>
 )
@@ -62,8 +67,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 	)}/>
 )
 
-const Public = () => <h3>Public</h3>
-const Protected = () => <h3>Protected</h3>
+
 
 
 
