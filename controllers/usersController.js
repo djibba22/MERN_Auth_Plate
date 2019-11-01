@@ -25,10 +25,12 @@ module.exports = {
 				passport.authenticate('local')(req, res, () => {
 						req.session.save((err) => {
 								if (err) {
+									//ToDo:log the error and look for an existing user
+									
 										return next(err);
 								}
 
-								res.status(200).send('OK');
+								res.send(200,"successful register");
 						});
 				});
 		});
