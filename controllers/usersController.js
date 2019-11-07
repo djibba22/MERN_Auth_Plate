@@ -3,9 +3,11 @@ const passport = require('passport');
 
 module.exports = {
     getUser: function(req, res, next) {
-        if(req.user) {
+		console.log(req.session.passport.user);
+		
+        if(req.session.passport.user) {
             return res.status(200).json({
-                user: req.user,
+                user: req.session.passport.user,
                 authenticated: true
             });
         } else {
