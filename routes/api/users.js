@@ -10,10 +10,11 @@ router.route("/register")
   .post(usersController.register);
 
 router.route("/login")
+//Added this to redirect to the login 
 .post(passport.authenticate('local', { failureRedirect: '/login' }),            usersController.login);
-
+//Changed to post route to match the request
 router.route("/logout")
-      .get(usersController.logout);
+      .post(usersController.logout);
 
 
 // Matches with "/api/users/:id"

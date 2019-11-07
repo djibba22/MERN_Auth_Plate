@@ -38,7 +38,10 @@ module.exports = {
 		});
     },
     login: function(req, res, next) {
-        console.log('/login handler');
+		console.log('/login handler');
+		if(!req.session.passport.user){
+			return false;
+		}
 		req.session.save((err) => {
 				if (err) {
 						return next(err);
