@@ -4,8 +4,7 @@ import {
 	Route,
 	Link,
   Redirect,
-  Switch,
-	withRouter
+  Switch
 } from 'react-router-dom';
 import Auth from "./utils/Auth";
 import Nav from "./components/Nav";
@@ -27,7 +26,6 @@ const AuthExample = () => (
 		<div>
       		<Nav className="App-header"/>
 			<Container>
-				<AuthButton/>
 				<ul style={listStyle}>
 					<li><Link to="/public">Public Page</Link></li>
 					<li><Link to="/protected">Protected Page</Link></li>
@@ -46,22 +44,7 @@ const AuthExample = () => (
 )
 
 
-//Authbutton component / withRouter is imported from react-router
-const AuthButton = withRouter(({ history }) => (
-	Auth.isAuthenticated ? (
-		<div className="container">
-			<p>Success! You are Logged In!</p>
-			<button className="btn btn-danger" 
-				onClick={() => {
-					Auth.signout(() => history.push('/'))
-				}}>
-				Sign out
-			</button>
-		</div>
-	) : (
-		<p>You are not logged in.</p>
-	)
-))
+
 
 // This is the private route component this checks for an authorized user here
 const PrivateRoute = ({ component: Component, ...rest }) => (
