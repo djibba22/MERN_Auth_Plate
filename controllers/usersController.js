@@ -3,9 +3,11 @@ const passport = require('passport');
 
 module.exports = {
     getUser: function(req, res, next) {
-        if(req.user) {
+		console.log(req.session.passport.user);
+		
+        if(req.session.passport.user) {
             return res.status(200).json({
-                user: req.user,
+                user: req.session.passport.user,
                 authenticated: true
             });
         } else {
@@ -25,16 +27,21 @@ module.exports = {
 				passport.authenticate('local')(req, res, () => {
 						req.session.save((err) => {
 								if (err) {
+									//ToDo:log the error and look for an existing user
+									
 										return next(err);
 								}
 
-								res.status(200).send('OK');
+								res.send(200,"successful register");
 						});
 				});
 		});
     },
     login: function(req, res, next) {
-        console.log('/login handler');
+		console.log('/login handler');
+		if(!req.session.passport.user){
+			return false;
+		}
 		req.session.save((err) => {
 				if (err) {
 						return next(err);

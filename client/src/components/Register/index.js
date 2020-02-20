@@ -18,6 +18,8 @@ class Register extends React.Component {
 		.then((response) => {
 			if (response.status === 200) {
 				console.log('Succesfully registered user!');
+				//relocate to the login page
+				window.location.assign("/protected");
 			}
 		})
 		.catch((err) => {
