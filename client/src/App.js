@@ -47,6 +47,9 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 			<Component {...props}/>
 		) : (
 			<div className="container">
+				<div className="alert alert-danger text-center" role="alert">
+						This page is private to authenticated users.
+					</div>
 				<div className="row">
 					<div className="col-sm"></div>
 					<div className="col-sm">
