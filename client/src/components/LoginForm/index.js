@@ -1,4 +1,5 @@
 import React from 'react'
+import Card from "../Card"
 
 class LoginForm extends React.Component {
 	// refs
@@ -9,7 +10,7 @@ class LoginForm extends React.Component {
 	render() {
 		const { onLogin } = this.props;
 		return (
-			
+			<Card title="Login with your Username and Password">
 				<form
 					ref={(elem) => this.form = elem}
 					onSubmit={(e) => {
@@ -28,7 +29,7 @@ class LoginForm extends React.Component {
 						</button>
 					</div>
 				</form>
-			
+			</Card>	
 		)
 	}
 }

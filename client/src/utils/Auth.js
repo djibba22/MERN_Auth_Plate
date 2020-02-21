@@ -12,12 +12,15 @@ const Auth = {
 			credentials: 'include'
 		})
 		.then((res) => {
+			console.log(`response to authenticate ${res}`);
+			
 			//added this for the response code check on deployment
 			if(res.status !== 200){
 				return false;
 			}
 			this.isAuthenticated = true
 			if (typeof cb === 'function') {
+				console.log(`User in Auth.js ${res.user}`);
 				cb(res.json().user);
 			}
 		})

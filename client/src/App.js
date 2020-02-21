@@ -15,22 +15,12 @@ import PublicRoute from "./pages/PublicRoute";
 import ProtectedRoute from "./pages/ProtectedRoute";
 import './App.css';
 
-//I want to add some basic inline styling here, even though we are bringing in styles
-const listStyle = {
-	color: 'cornflowerblue',
-	listStyle:'none'
-  };
 //Now we have all the stuff we need .. let's render some components with the Router
 const AuthExample = () => (
 	<Router>
 		<div>
       		<Nav className="App-header"/>
 			<Container>
-				<ul style={listStyle}>
-					<li><Link to="/public">Public Page</Link></li>
-					<li><Link to="/protected">Protected Page</Link></li>
-					<li><Link to="/register">Register a New User</Link></li>
-				</ul>
 				<Switch>
 					<Route path="/public" component={PublicRoute}/>
 					<Route path="/login" component={Login}/>
@@ -50,16 +40,25 @@ const AuthExample = () => (
 const PrivateRoute = ({ component: Component, ...rest }) => (
 	<Router>
 	<div>
-	{console.log(Component)}
+	
 	 <Route {...rest} render={props => (
 		
 		Auth.isAuthenticated ? (
 			<Component {...props}/>
 		) : (
-			<Redirect to={{
-				pathname: '/login',
-				state: { from: props.location }
-			}}/>
+			<div className="container">
+				<div className="row">
+					<div className="col-sm"></div>
+					<div className="col-sm">
+					<h3>Please Register or Login</h3>
+					</div>
+					<div className="col-sm"></div>
+				</div>
+				<Redirect to={{
+					pathname: '/login',
+					state: { from: props.location }
+				}}/>
+			</div>	
 		)
 		)}/>
 		</div>

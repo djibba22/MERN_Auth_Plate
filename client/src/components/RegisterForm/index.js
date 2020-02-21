@@ -1,4 +1,5 @@
 import React from 'react'
+import Card from "../Card"
 
 
 
@@ -13,7 +14,7 @@ class RegisterForm extends React.Component {
 		console.log(`Register form props are: ${JSON.stringify(this.props)}`);
 		
 		return (
-			
+			<Card title="Register a New User">
 				<form
 					ref={(elem) => this.form = elem}
 					onSubmit={(e) => {
@@ -30,7 +31,7 @@ class RegisterForm extends React.Component {
 						<button className="btn btn btn-primary" type='submit'>Submit</button>
 					</div>
 				</form>
-			
+			</Card>
 		)
 	}
 }

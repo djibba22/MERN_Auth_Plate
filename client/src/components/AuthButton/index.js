@@ -12,20 +12,18 @@ import { Link } from "react-router-dom";
 
 const AuthButton = withRouter(({ history }) => (
 	Auth.isAuthenticated ? (
-		<div className="container">
 			<button className="btn btn-danger" 
 				onClick={() => {
 					Auth.signout(() => history.push('/'))
 				}}>
-				Sign out
+				Logout
 			</button>
-		</div>
 	) : (
     <Link  
         className="btn btn-success"
         to="/login"
          >Login
-      </Link>
+    </Link>
 	)
 ))
 

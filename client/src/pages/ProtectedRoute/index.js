@@ -1,4 +1,6 @@
 import React from 'react'
+import Auth from "../../utils/Auth";
+import Card from "../../components/Card"
 /*ToDo*/
 /**
  * Let's get some styling in here
@@ -6,9 +8,14 @@ import React from 'react'
 
 /* This is a very simple component.. it probably doesn't need to be a smart component at this point but you never know what's goingto happen in the future */
 class ProtectedRoute extends React.Component {
+
 	render() {
 		return (
-			<h3>This is a Protected Route, You must log in to see this page.</h3>	
+			<div className="container">
+				<Card title="Welcome.">
+					<p>You are logged in.</p>
+				</Card>
+			</div>	
 		)
 	}
 }

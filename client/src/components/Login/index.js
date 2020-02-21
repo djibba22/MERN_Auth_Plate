@@ -24,6 +24,8 @@ class Login extends React.Component {
 			if (response.status === 200) { //All good
 				Auth.authenticate(() => { //Update the boolean and take off the cuffs
 					this.setState({ redirectToReferrer: true })
+					console.log(`Response in login ${JSON.stringify(response)}`);
+					
 				});
 			}
 		})
@@ -38,13 +40,12 @@ class Login extends React.Component {
 		
 		if (redirectToReferrer) {
 			return (
-				<Redirect to={from}/>
+				<Redirect  to={from}/>
 			)
 		}
 		
 		return (
 			<div>
-				<p>You must log in to view the page at {from.pathname}</p>
 				<LoginForm onLogin={this.login} />
 			</div>
 		)
