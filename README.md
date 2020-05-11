@@ -1,5 +1,8 @@
 ![Express](https://img.shields.io/badge/version-4.16.3-blue)
+![Passport](https://img.shields.io/badge/version-0.4.0-blue)
 ![Open Issues](https://img.shields.io/github/issues/djibba22/MERN_Auth_Plate)
+![Forks](https://img.shields.io/github/forks/djibba22/MERN_Auth_Plate?style=social)
+
 
 
 # M.E.R.N. Authentication Boilerplate
