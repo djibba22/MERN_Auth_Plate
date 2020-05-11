@@ -1,5 +1,8 @@
-- Express: ![version](https://img.shields.io/badge/version-4.16.3-blue)
-- Issues: [![Open Issues](https://img.shields.io/github/issues/djibba22/MERN_Auth_Plate)
+![Express](https://img.shields.io/badge/version-4.16.3-blue)
+![Passport](https://img.shields.io/badge/version-0.4.0-blue)
+![Open Issues](https://img.shields.io/github/issues/djibba22/MERN_Auth_Plate)
+![Forks](https://img.shields.io/github/forks/djibba22/MERN_Auth_Plate?style=social)
+
 
 
 # M.E.R.N. Authentication Boilerplate
@@ -36,9 +39,9 @@ Then start the project
 ![Register A New User](/client/public/images/register.png)
 
 ## Login and Existing User
-![Register A New User](/client/public/images/login.png)
+![Login an existing User](/client/public/images/login.png)
 
 ## Routes are protected from Users that are not logged in
-![Login an existing User](/client/public/images/protected.png)
+![Protected Route](/client/public/images/protected.png)
 
 
