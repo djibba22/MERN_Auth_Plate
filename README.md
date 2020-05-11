@@ -36,7 +36,7 @@ Then start the project
 `yarn start`
 
 ## Register a New User
-![Register A New User](/client/public/images/register.png)
+![Register A New User](/client/public/images/Register.png)
 
 ## Login and Existing User
 ![Login an existing User](/client/public/images/login.png)
