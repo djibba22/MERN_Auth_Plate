@@ -5,7 +5,7 @@ import "./style.css";
 import AuthButton from "../AuthButton";
 //I want to add some basic inline styling here, even though we are bringing in styles
 const buttonStyle = {
-	marginRight:10
+  marginRight: 10
 };
 class Nav extends Component {
   state = {
@@ -31,7 +31,7 @@ class Nav extends Component {
     window.addEventListener("resize", this.updateWidth);
   }
 
-  componentWillUnMount() {
+  componentWillUnmount() {
     window.removeEventListener("resize", this.updateWidth);
   }
 
@@ -46,10 +46,10 @@ class Nav extends Component {
             <li className="nav-item ">
               <Link style={buttonStyle} className=" btn btn-secondary" to="/public">Public Page</Link>
               <Link style={buttonStyle} className="btn btn-danger" to="/protected">Protected Page</Link>
-              <Link style={buttonStyle} className="btn btn-warning"to="/register">Register a New User</Link>
-              <AuthButton/>
+              <Link style={buttonStyle} className="btn btn-warning" to="/register">Register a New User</Link>
+              <AuthButton />
             </li>
-          
+
           </ul>
         </div>
       </nav>
