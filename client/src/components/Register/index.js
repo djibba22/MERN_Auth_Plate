@@ -1,12 +1,13 @@
 import React from 'react';
 import RegisterForm from "../RegisterForm";
+import { useHistory } from "react-router";
 //The component for doing the actual signup of the User
-class Register extends React.Component {
-	state = {
-		redirectToReferrer: false
-	}
 
-	register = (data) => {
+function Register() {
+
+	let history = useHistory();
+
+	const register = (data) => {
 		fetch('api/users/register', {
 			method: 'POST',
 			body: JSON.stringify(data),
@@ -15,25 +16,24 @@ class Register extends React.Component {
 			},
 			credentials: 'include'
 		})
-		.then((response) => {
-			if (response.status === 200) {
-				console.log('Succesfully registered user!');
-				//relocate to the login page
-				window.location.assign("/login");
-			}
-		})
-		.catch((err) => {
-			console.log('Error registering user.', err);
-		});
+			.then((response) => {
+				if (response.status === 200) {
+					console.log('Succesfully registered user!');
+					//relocate to the login page
+					history.push("/login")
+				}
+			})
+			.catch((err) => {
+				console.log('Error registering user.', err);
+			});
 	}
 
-	render() {
-		return (
-			<div>
-				<RegisterForm onRegister={this.register} />
-			</div>
-		)
-	}
+	return (
+		<div>
+			<RegisterForm onRegister={register} />
+		</div>
+	)
+
 }
 
-export default Register
+export default Register;

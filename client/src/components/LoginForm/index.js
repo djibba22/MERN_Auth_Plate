@@ -1,37 +1,35 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import Card from "../Card"
 
-class LoginForm extends React.Component {
-	// refs
-	form: null;
-	usernameElem: null;
-	passwordElem: null;
+function LoginForm({ onLogin }) {
 
-	render() {
-		const { onLogin } = this.props;
-		return (
-			<Card title="Login with your Username and Password">
-				<form
-					ref={(elem) => this.form = elem}
-					onSubmit={(e) => {
-						e.preventDefault();
-						return onLogin({
-							username: this.usernameElem.value,
-							password: this.passwordElem.value
-						});
-					}}
-				>
-					<div className="form-group">
-						<input className="form-control" ref={(input) => this.usernameElem = input} type='text' name="username" placeholder='Enter Username' /><br/>
-						<input className="form-control" ref={(input) => this.passwordElem = input} type='password' name="password" placeholder='Password' /><br/>
-						<button className="btn btn-success" type='submit'>
-							Submit
+	const formRef = useRef();
+	const userNameRef = useRef();
+	const passwordRef = useRef();
+
+	return (
+		<Card title="Login with your Username and Password">
+			<form
+				ref={formRef}
+				onSubmit={(e) => {
+					e.preventDefault();
+					return onLogin({
+						username: userNameRef.current.value,
+						password: passwordRef.current.value
+					});
+				}}
+			>
+				<div className="form-group">
+					<input className="form-control" ref={userNameRef} type='text' name="username" placeholder='Enter Username' /><br />
+					<input className="form-control" ref={passwordRef} type='password' name="password" placeholder='Password' /><br />
+					<button className="btn btn-success" type='submit'>
+						Submit
 						</button>
-					</div>
-				</form>
-			</Card>	
-		)
-	}
+				</div>
+			</form>
+		</Card>
+	)
 }
+
 
 export default LoginForm

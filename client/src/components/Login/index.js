@@ -1,16 +1,27 @@
-import React from 'react';
-import { Redirect } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import LoginForm from "../LoginForm";
 import Auth from "../../utils/Auth";
+import { useLocation, useHistory } from "react-router";
 //Uses the Auth methods to actually login with the LoginForm Component.
-class Login extends React.Component {
-    //Initial boolean to check for authenticated user
-	state = {
-		redirectToReferrer: false
-	}
+
+function Login() {
+	let location = useLocation();
+	let history = useHistory();
+	const [redirectToReferrer, setRedirectToReferrer] = useState(false);
+
+	useEffect(() => {
+
+		const { from } = location.state || { from: { pathname: '/protected' } }
+		if (redirectToReferrer) {
+			history.push(from)
+		}
+
+	}, [redirectToReferrer, history, location.state])
+
+
     /* We need to POST to the API the users info,
         This will get passed down as a prop to the LoginForm */
-	login = (data) => {
+	const login = (data) => {
 		console.log('Logging in ' + JSON.stringify(data));
 		fetch('api/users/login', {
 			method: 'POST',
@@ -20,36 +31,25 @@ class Login extends React.Component {
 				'Content-Type': 'application/json'
 			},
 		})
-		.then((response) => {
-			if (response.status === 200) { //All good
-				Auth.authenticate(() => { //Update the boolean and take off the cuffs
-					this.setState({ redirectToReferrer: true })
-					console.log(`Response in login ${JSON.stringify(response)}`);
-					
-				});
-			}
-		})
-		.catch((err) => {// No beuno, kick them
-			console.log('Error logging in.', err);
-		});
+			.then((response) => {
+				if (response.status === 200) { //All good
+					Auth.authenticate(() => { //Update the boolean and take off the cuffs
+						setRedirectToReferrer(true)
+						console.log(`Response in login ${JSON.stringify(response)}`);
+
+					});
+				}
+			})
+			.catch((err) => {// No beuno, kick them
+				console.log('Error logging in.', err);
+			});
 	}
 
-	render() {
-		const { from } = this.props.location.state || { from: { pathname: '/protected' } }
-		const { redirectToReferrer } = this.state
-		
-		if (redirectToReferrer) {
-			return (
-				<Redirect  to={from}/>
-			)
-		}
-		
-		return (
-			<div>
-				<LoginForm onLogin={this.login} />
-			</div>
-		)
-	}
+	return (
+		<div>
+			<LoginForm onLogin={login} />
+		</div>
+	)
 }
 
 export default Login;
