@@ -34,7 +34,7 @@ function Nav() {
     return () => {
       window.removeEventListener("resize", updateWidth);
     }
-  })
+  }, [])
 
 
   return (

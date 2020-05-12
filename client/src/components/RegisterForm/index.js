@@ -31,4 +31,4 @@ function RegisterForm({ onRegister }) {
 }
 
 
-export default RegisterForm;
+export default RegisterForm

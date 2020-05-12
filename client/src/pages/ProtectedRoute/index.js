@@ -30,7 +30,7 @@ function ProtectedRoute() {
 				console.log('Error fetching authorized user.');
 			});
 
-	}, [dispatch]);
+	}, []);
 
 	return (
 		<div className="container">
