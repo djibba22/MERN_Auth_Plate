@@ -27,12 +27,17 @@ Install all the dependencies with Yarn or NPM
 Make sure you start Mongod and have mongoDB running..
 `mongod` <br>
 Then start the project
-`yarn start`
+`yarn start
+## Basic Nav on Homepage
+![Register A New User](/client/public/images/home_shot.png)
 
 ## Register a New User
-![Register A New User](/client/public/images/Register.png)
+![Register A New User](/client/public/images/register_shot.png)
+
+## Login the new user
+![Register A New User](/client/public/images/login_shot.png)
 
 ## Routes are protected from Users that are not logged in
-![Login an existing User](/client/public/images/ProtectedRoute.png)
+![Login an existing User](/client/public/images/protected_shot.png)
 
 
