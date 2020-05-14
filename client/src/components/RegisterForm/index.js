@@ -1,39 +1,34 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import Card from "../Card"
 
-
-
-class RegisterForm extends React.Component {
+// class RegisterForm extends React.Component {
+function RegisterForm({ onRegister }) {
 	// refs
-	form: null;
-	usernameElem: null;
-	passwordElem: null;
+	const formRef = useRef();
+	const userNameRef = useRef();
+	const passwordRef = useRef();
 
-	render() {
-		const { onRegister } = this.props;
-		console.log(`Register form props are: ${JSON.stringify(this.props)}`);
-		
-		return (
-			<Card title="Register a New User">
-				<form
-					ref={(elem) => this.form = elem}
-					onSubmit={(e) => {
-						e.preventDefault();
-						return onRegister({
-							username: this.usernameElem.value,
-							password: this.passwordElem.value
-						});
-					}}
-				>
-					<div className="form-group">
-						<input className="form-control" ref={(input) => this.usernameElem = input} type='text' name="username" placeholder='Enter Username' /><br/>
-						<input className="form-control"  ref={(input) => this.passwordElem = input} type='password' name="password" placeholder='Password' /><br/>
-						<button className="btn btn btn-primary" type='submit'>Submit</button>
-					</div>
-				</form>
-			</Card>
-		)
-	}
+	return (
+		<Card title="Register a New User">
+			<form
+				ref={formRef}
+				onSubmit={(e) => {
+					e.preventDefault();
+					return onRegister({
+						username: userNameRef.current.value,
+						password: passwordRef.current.value
+					});
+				}}
+			>
+				<div className="form-group">
+					<input className="form-control" ref={userNameRef} type='text' name="username" placeholder='Enter Username' /><br />
+					<input className="form-control" ref={passwordRef} type='password' name="password" placeholder='Password' /><br />
+					<button className="btn btn btn-primary" type='submit'>Submit</button>
+				</div>
+			</form>
+		</Card>
+	)
 }
+
 
 export default RegisterForm
