@@ -4,12 +4,15 @@ Full Stack Project starter with basic components routes and authentication. The 
 ## Purpose and Inspiration
 You can fork and run this to quickly have an MVC project up and running, then simply add the controllers models and components that your project needs. I wanted to have a place to start with no other models than the User model. This is currently at the point where you can:
 
-## MVC
-This project is structured in Full Stack Javascript with Mongoose Models REACT Views and Controllers. The heavy lifting for the authentication is done in src/utils/Auth.js.
-
 - Register a new user
 - Login with an existing user
 - Log Out
+*(You are not able to navigate to client side routes that are protected by authentication)*
+
+
+## MVC
+This project is structured in Full Stack Javascript with Mongoose Models REACT Views and Controllers. The heavy lifting for the authentication is done in src/utils/Auth.js.
+
 
 ## Tech Stack
 + [MONGOOSE ORM](https://www.npmjs.com/package/mongoose)
