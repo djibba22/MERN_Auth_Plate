@@ -14,6 +14,7 @@ You can fork and run this to quickly have an MVC project up and running, then si
 - Register a new user
 - Login with an existing user
 - Log Out
+*(You are not able to navigate to client side routes that are protected by authentication)*
 
 ## MVC
 This project is structured in Full Stack Javascript with Mongoose Models REACT Views and Controllers. The heavy lifting for the authentication is done in src/utils/Auth.js.
